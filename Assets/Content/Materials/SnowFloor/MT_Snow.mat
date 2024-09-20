@@ -67,13 +67,13 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Size: 1
-    - _VertexOffset: -52.8
+    - _VertexOffset: -9.82
     m_Colors:
-    - _AE1E2: {r: -0.27, g: -0.02, b: 2.25, a: 0}
+    - _AE1E2: {r: 0.26, g: 0.1, b: 1.6, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color_1: {r: 1, g: 1, b: 1, a: 1}
-    - _SnowColor: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
-    - _SnowDarkenColor: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
+    - _SnowColor: {r: 0.3272072, g: 0.34300447, b: 0.4056604, a: 1}
+    - _SnowDarkenColor: {r: 0.7202296, g: 0.74488825, b: 0.7830189, a: 1}
     - _SnowParams: {r: 0.24, g: -0.04, b: 0, a: 0}
     - _Vector2: {r: 0.39, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

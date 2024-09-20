@@ -1,9 +1,7 @@
-﻿using DefaultNamespace.Utilities;
+﻿using Content.Scripts.Utilities;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
-using UnityEngine.XR;
 
-namespace DefaultNamespace
+namespace Content.Scripts.Input
 {
     public class InputPresenter : IPresenter
     {

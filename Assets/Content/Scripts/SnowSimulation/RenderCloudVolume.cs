@@ -1,29 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RenderCloudVolume : MonoBehaviour
+namespace Content.Scripts.SnowSimulation
 {
-    public int horizontalStackSize = 20;
-    public float cloudHeight;
-    public Mesh quadMesh;
-    public Material cloudMaterial;
-    
-    private float offset;
-    private Matrix4x4 _matrix4;
-    
-    void Update()
+    public class RenderCloudVolume : MonoBehaviour
     {
-        cloudMaterial.SetFloat("_midYValue", transform.position.y);
-        cloudMaterial.SetFloat("_cloudHeight", cloudHeight);
-        
-        RenderParams rp = new RenderParams(cloudMaterial);
-        offset = cloudHeight / horizontalStackSize / 2f;
-        Vector3 startPos = transform.position + (Vector3.up * (offset * horizontalStackSize / 2f));
-        for (int i = 0; i < horizontalStackSize; i++)
+        public int horizontalStackSize = 20;
+        public float cloudHeight;
+        public Mesh quadMesh;
+        public Material cloudMaterial;
+    
+        private float offset;
+        private Matrix4x4 _matrix4;
+    
+        void Update()
         {
-            _matrix4 = Matrix4x4.TRS(startPos - (Vector3.up * offset * i), transform.rotation, transform.localScale);
-            Graphics.RenderMesh(rp, quadMesh, 0, _matrix4);
+            cloudMaterial.SetFloat("_midYValue", transform.position.y);
+            cloudMaterial.SetFloat("_cloudHeight", cloudHeight);
+        
+            RenderParams rp = new RenderParams(cloudMaterial);
+            offset = cloudHeight / horizontalStackSize / 2f;
+            Vector3 startPos = transform.position + (Vector3.up * (offset * horizontalStackSize / 2f));
+            for (int i = 0; i < horizontalStackSize; i++)
+            {
+                _matrix4 = Matrix4x4.TRS(startPos - (Vector3.up * offset * i), transform.rotation, transform.localScale);
+                Graphics.RenderMesh(rp, quadMesh, 0, _matrix4);
+            }
         }
     }
 }

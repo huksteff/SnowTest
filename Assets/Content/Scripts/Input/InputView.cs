@@ -1,9 +1,8 @@
 ﻿using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace DefaultNamespace
+namespace Content.Scripts.Input
 {
     public class InputView : MonoBehaviour
     {

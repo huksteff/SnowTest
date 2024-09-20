@@ -1,8 +1,8 @@
-﻿using DefaultNamespace.Utilities;
-using UnityEditor;
+﻿using Content.Scripts.Input;
+using Content.Scripts.Utilities;
 using UnityEngine;
 
-namespace DefaultNamespace.Player
+namespace Content.Scripts.Player
 {
     public class PlayerMovementUpdater : IUpdater
     {
@@ -30,7 +30,7 @@ namespace DefaultNamespace.Player
                 var newPosition = _view.transform.position + (direction * _view.MovementSpeed);
                 var angle = Mathf.SmoothDampAngle(_view.transform.eulerAngles.y, targetAngle, ref _currentVelocity,
                     _view.RotationSpeed * deltaTime);
-                
+
                 _view.Animator.SetFloat("Speed", Mathf.Lerp(0, 1, 1f));
                 _view.transform.position = Vector3.Lerp(_view.transform.position, newPosition, _view.MoveSmoothTime * deltaTime);
                 _view.transform.rotation = Quaternion.Euler(0, angle, 0);

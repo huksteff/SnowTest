@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+namespace Content.Scripts.Input
 {
     public class InputModel
     {

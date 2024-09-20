@@ -1,7 +1,6 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace DefaultNamespace.Player
+namespace Content.Scripts.Player
 {
     [CreateAssetMenu(fileName = "PlayerConfig", menuName = "ScriptableObjects/New PlayerConfig", order = 51)]
     public class PlayerConfig : ScriptableObject

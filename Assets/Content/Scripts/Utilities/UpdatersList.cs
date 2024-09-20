@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DefaultNamespace.Utilities
+namespace Content.Scripts.Utilities
 {
     public class UpdatersList : IUpdater
     {

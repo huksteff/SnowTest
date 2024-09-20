@@ -24,6 +24,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _IceTexture:
+        m_Texture: {fileID: 2800000, guid: 5fda4aed65b02ba4581da42a24fee7b0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 5c7c472a5492bc942896338a1fa419fc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2D:
         m_Texture: {fileID: 2800000, guid: 5c7c472a5492bc942896338a1fa419fc, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -43,9 +51,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _Float: -0.015
+    - _Float_1: 0.934
+    - _IceBrightness: 0.04
+    - _MaskStrenght: 11.56
     - _Size: 0.84
     - _Value: 1
+    - _VignetteScale: 0
     m_Colors:
-    - _Color: {r: 1.2495551, g: 1.3437765, b: 2.264151, a: 1}
-    - _Color_1: {r: 0.41571736, g: 0.43168116, b: 0.509434, a: 1}
+    - _Color: {r: 1.5824337, g: 1.619712, b: 1.9391671, a: 1}
+    - _Color_1: {r: 0.60817903, g: 0.63102967, b: 0.745283, a: 1}
   m_BuildTextureStacks: []

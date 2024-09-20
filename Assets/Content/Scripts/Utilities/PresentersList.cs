@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Unity.VisualScripting;
 
-namespace DefaultNamespace.Utilities
+namespace Content.Scripts.Utilities
 {
     public class PresentersList : IPresenter
     {

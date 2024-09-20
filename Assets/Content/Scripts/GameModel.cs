@@ -1,7 +1,8 @@
-﻿using DefaultNamespace.Player;
-using DefaultNamespace.Utilities;
+﻿using Content.Scripts.Input;
+using Content.Scripts.Player;
+using Content.Scripts.Utilities;
 
-namespace DefaultNamespace
+namespace Content.Scripts
 {
     public class GameModel
     {

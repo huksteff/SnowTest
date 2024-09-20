@@ -1,6 +1,7 @@
-﻿using DefaultNamespace.Utilities;
+﻿using Content.Scripts.Player.Frozen;
+using Content.Scripts.Utilities;
 
-namespace DefaultNamespace.Player
+namespace Content.Scripts.Player
 {
     public class PlayerPresenter : IPresenter
     {
@@ -8,6 +9,7 @@ namespace DefaultNamespace.Player
         private readonly PlayerModel _model;
         private readonly PlayerView _view;
         private IUpdater _updater;
+        private readonly PresentersList _presenters = new PresentersList();
 
         public PlayerPresenter(GameModel gameModel, PlayerModel model, PlayerView view)
         {
@@ -18,6 +20,9 @@ namespace DefaultNamespace.Player
         
         public void Init()
         {
+            _presenters.Add(new PlayerFrozenPresenter(_gameModel, _model, _view));
+            _presenters.Init();
+            
             _updater = new PlayerMovementUpdater(_model, _view, _gameModel.InputModel);
             _gameModel.UpdatersList.Add(_updater);
         }

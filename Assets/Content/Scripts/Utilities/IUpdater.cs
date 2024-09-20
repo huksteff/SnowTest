@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace.Utilities
+﻿namespace Content.Scripts.Utilities
 {
     public interface IUpdater
     {
