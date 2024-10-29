@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using Vector3 = UnityEngine.Vector3;
+using Vector2 = UnityEngine.Vector2;
 
 namespace Content.Var3.Scripts
 {
@@ -30,6 +31,7 @@ namespace Content.Var3.Scripts
         private Mesh mesh;
         public Vector3[] _vertices;
         private int[] _triangles;
+        private Vector2[] _uvs;
 
         private void Start()
         {
@@ -140,6 +142,24 @@ namespace Content.Var3.Scripts
 
                 d++;
             }
+            
+            // for (int i = 0; i < _vertices.Length; i++)
+            // {
+            //     _uvs[i] = new Vector2();
+            // }
+            
+            _uvs = new Vector2[_vertices.Length];
+
+            _uvs[0] = new Vector2(0, 0);
+            _uvs[1] = new Vector2(0, heightVerts);
+            _uvs[2] = new Vector2(widthVerts, 0);
+            _uvs[3] = new Vector2(widthVerts, heightVerts);
+            
+            // _uvs[0] = new Vector2(_vertices[0].x, _vertices[0].y);
+            // _uvs[1] = new Vector2(_vertices[1].x, _vertices[1].y);
+            // _uvs[2] = new Vector2(_vertices[2].x, _vertices[2].y);
+            // _uvs[3] = new Vector2(_vertices[3].x, _vertices[3].y);
+
         }
 
         private bool CheckChangesHeight()
@@ -210,7 +230,7 @@ namespace Content.Var3.Scripts
                 }
             }
         }
-
+        
         private void ResetMesh()
         {
             for (int i = 0; i < _vertices.Length; i++)
@@ -225,6 +245,7 @@ namespace Content.Var3.Scripts
 
             mesh.vertices = _vertices;
             mesh.triangles = _triangles;
+            mesh.uv = _uvs;
 
             mesh.RecalculateNormals();
         }

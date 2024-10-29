@@ -101,7 +101,7 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     - _cloudHeight: 2
-    - _midYValue: 16.00021
+    - _midYValue: 17.208324
     m_Colors:
     - _BaseColor: {r: 0.5, g: 0.035377353, b: 0.035377353, a: 1}
     - _CloudScale: {r: 0.02, g: 0.2, b: 0, a: 0}
