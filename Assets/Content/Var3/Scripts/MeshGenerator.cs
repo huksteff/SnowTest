@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using Vector3 = UnityEngine.Vector3;
+using Vector2 = UnityEngine.Vector2;
 
 namespace Content.Var3.Scripts
 {
@@ -30,6 +32,7 @@ namespace Content.Var3.Scripts
         private Mesh mesh;
         public Vector3[] _vertices;
         private int[] _triangles;
+        [SerializeField] private Vector2[] _uvs;
 
         private void Start()
         {
@@ -42,6 +45,7 @@ namespace Content.Var3.Scripts
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 CreateMesh();
+                CalculateUVs();
                 UpdateMesh();
             }
 
@@ -157,6 +161,59 @@ namespace Content.Var3.Scripts
             return false;
         }
 
+        private void CalculateUVs()
+        {
+            _uvs = new Vector2[_vertices.Length];
+
+            var xSize = MeshScale.x + 1;
+            var k = Mathf.Clamp01(xSize)/MeshScale.x;
+            var currentRow = 0.0;
+            var index = 0;
+
+            for (int i = 0; i < _vertices.Length; i++)
+            {
+                if (i == 0)
+                {
+                    _uvs[i] = new Vector2(0,0);
+                    index++;
+                    continue;
+                }
+                
+                _uvs[i] = new Vector2(Mathf.Clamp01((float)currentRow), Mathf.Clamp01(index * k));
+                index++;
+
+                if (i == xSize - 1)
+                {
+                    _uvs[i] = new Vector2(0, 1);
+                    currentRow += k;
+                    index = 0;
+                    continue;
+                }
+
+                if (index % xSize == 0)
+                {
+                    _uvs[i] = new Vector2(Mathf.Clamp01((float)currentRow), 1);
+                    currentRow += k;
+                    index = 0;
+                    continue;
+                }
+
+                if (i == xSize * xSize - xSize)
+                {
+                    _uvs[i] = new Vector2(1, 0);
+                    currentRow = 1;
+                    index = 1;
+                    continue;
+                }
+
+                if (i == _uvs.Length - 1)
+                {
+                    _uvs[i] = new Vector2(Mathf.Clamp01(_vertices[^1].x), Mathf.Clamp01(_vertices[^1].z));
+                    break;
+                }
+            }
+        }
+
         private void CalculateVerticesHeight()
         {
             var xSize = MeshScale.x + 1;
@@ -164,7 +221,7 @@ namespace Content.Var3.Scripts
             var rangeVert = SmoothHeightRange * xSize;
             // Debug.Log($"Mas Length: {_vertices.Length}");
             StatsText.text = ($"xSize {xSize}\nRangeHoriz {rangeHoriz}\nRangeVert {rangeVert}");
-            
+
             for (int i = 1; i < _vertices.Length - 1; i++)
             {
                 if (i % xSize == 0)
@@ -185,7 +242,7 @@ namespace Content.Var3.Scripts
                 {
                     continue;
                 }
-                
+
                 if (_vertices[i - xSize].y < _vertices[i].y)
                 {
                     _vertices[i - xSize].y = _vertices[i].y / 2;
@@ -194,12 +251,12 @@ namespace Content.Var3.Scripts
                 {
                     _vertices[i].y = _vertices[i - xSize].y / 2;
                 }
-                
+
                 if (i + xSize > _vertices.Length)
                 {
                     continue;
                 }
-                
+
                 if (_vertices[i + xSize].y < _vertices[i].y)
                 {
                     _vertices[i + xSize].y = _vertices[i].y / 2;
@@ -225,6 +282,7 @@ namespace Content.Var3.Scripts
 
             mesh.vertices = _vertices;
             mesh.triangles = _triangles;
+            mesh.uv = _uvs;
 
             mesh.RecalculateNormals();
         }
